@@ -1,10 +1,36 @@
 body {
-  background-color: #f0f2f5;
+  background-color: #ffe6eb; /* soft light pink */
+  color: #333;
 }
 
 .container {
-  background-color: white;
+  background-color: #ffffff; /* white card */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+h2, h4 {
+  color: #d63384; /* pink accent */
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #ff66a3; /* soft pink */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #e05590;
+}
+
+/* Table */
+.table {
+  color: #444;
+}
+
+.table thead {
+  background-color: #ffd6e0; /* lighter pink */
 }
