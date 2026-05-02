@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %} Home{% endblock title %}
+
+{% block body %}
+
+<div class="container my-4">
+  <h4>Add a Todo</h4>
+
+  <form action="/" method="POST">
+    <div class="mb-3">
+      <label for="title" class="form-label">Todo Title</label>
+      <input type="text" class="form-control" id="title" name="title" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="desc" class="form-label">Todo Description</label>
+      <input type="text" class="form-control" id="desc" name="desc" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Todo</button>
+  </form>
+</div>
+
+<div class="container my-3">
+  <h4>Your Todos</h4>
+
+
+
+!{% if allTodo|length == 0 %}
+<div class="alert alert-warning">
+  No matching todos found 😔
+</div>
+{% endif %}
+
+
+
+  {% if allTodo|length == 0 %}
+  <div class="alert alert-dark" role="alert">
+    No Todos found. Add your first todo now!
+  </div>
+  {% else %}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SNo</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Time</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for todo in allTodo %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.desc }}</td>
+        <td>{{ todo.date_created }}</td>
+
+        <td>
+          <a href="/update/{{todo.sno}}" class="btn btn-outline-dark btn-sm">
+            Update
+          </a>
+
+          <a href="/delete/{{todo.sno}}" 
+             class="btn btn-danger btn-sm"
+             onclick="return confirm('Are you sure you want to delete this todo?')">
+            Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endif %}
+</div>
+
+{% endblock body %}
