@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock title %}
+
+{% block body %}
+<div class="container my-4 about-page">
+    <div class="about-header">
+        <p class="small-heading">About MyTodo</p>
+        <h1>Organize your daily tasks in one simple place.</h1>
+        <p class="about-intro">
+            MyTodo is a personal task manager built with Flask. It helps users create,
+            search, update, and delete their own todos after logging in.
+        </p>
+    </div>
+
+    <div class="about-stat mt-3">
+        <span>{{ user_count }}</span>
+        <p>Users have signed up for this todo app.</p>
+    </div>
+
+    <div class="row g-3 mt-2">
+        <div class="col-md-4">
+            <div class="about-card">
+                <h5>Personal Account</h5>
+                <p>Each user can sign up, log in, and manage only their own todo list.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="about-card">
+                <h5>Easy Todo Control</h5>
+                <p>Add new tasks, edit old ones, and remove completed todos quickly.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="about-card">
+                <h5>Search Support</h5>
+                <p>Find todos by searching through titles and descriptions.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section mt-4">
+        <h4>Why this app is useful</h4>
+        <p>
+            This app keeps your task list private and organized. It is useful for daily
+            planning, study reminders, project work, and tracking small goals without
+            needing a complicated tool.
+        </p>
+        <a class="btn btn-primary" href="/">Go to Todos</a>
+    </div>
+</div>
+{% endblock body %}
