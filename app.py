@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 
 from flask import Flask, render_template, request, redirect
 from flask_login import (
@@ -46,6 +47,16 @@ class Todo(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, int(user_id))
+
+
+def create_database():
+    Path(app.instance_path).mkdir(parents=True, exist_ok=True)
+
+    with app.app_context():
+        db.create_all()
+
+
+create_database()
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -159,7 +170,4 @@ def delete(sno):
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-
     app.run(debug=True, port=8000)
